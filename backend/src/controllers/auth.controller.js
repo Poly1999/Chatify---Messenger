@@ -66,6 +66,11 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email and password are required' });
+  }
+
   try {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: 'Invalid credentials' });
@@ -90,6 +95,11 @@ export const login = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-  res.cookie('jwt', '', { maxAge: 0 });
+  res.cookie('jwt', '', {
+    maxAge: 0,
+    secure: ENV.NODE_ENV !== 'development',
+    httpOnly: true,
+    sameSite: 'strict',
+  });
   res.status(200).json({ message: 'Logged out successfully' });
 };
