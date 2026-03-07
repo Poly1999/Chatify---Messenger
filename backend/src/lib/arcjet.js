@@ -10,7 +10,7 @@ const aj = arcjet({
     // Create a bot detection rule
     detectBot({
       mode: 'LIVE',
-      allow: ['CATEGORY:SEARCH_ENGINE', 'CATEGORY:BROWSER'],
+      allow: ['CATEGORY:SEARCH_ENGINE'],
     }),
     // Create a token bucket rate limit. Other algorithms are supported.
     slidingWindow({
