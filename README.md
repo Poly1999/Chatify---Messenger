@@ -13,7 +13,7 @@ A modern, real-time messaging application built with the MERN stack and Socket.i
 - **Contact Management**: View all users and manage conversations
 - **Responsive Design**: Mobile-friendly dark theme UI
 - **Security**: Password encryption, rate limiting, and input validation
-- **Email Notifications**: Welcome emails for new users
+- **Email Notifications**: Welcome emails for new users (./screenshots/welcome-email.jpeg)
 
 ## 🛠️ Tech Stack
 
