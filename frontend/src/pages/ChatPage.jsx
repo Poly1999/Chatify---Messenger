@@ -13,9 +13,9 @@ function ChatPage() {
   console.log('selectedUser:', selectedUser);
   return (
     <div className='relative w-full max-w-6xl h-[800px]'>
-      <BorderAnimatedContainer>
+      <BorderAnimatedContainer className='flex flex-col md:flex-row h-full'>
         {/* LEFT SIDE */}
-        <div className='w-80 bg-slate-800/50 backdrop-blur-sm flex flex-col'>
+        <div className='w-full md:w-80 bg-slate-800/50 backdrop-blur-sm flex flex-col'>
           <ProfileHeader />
           <ActiveTabSwitch />
 
