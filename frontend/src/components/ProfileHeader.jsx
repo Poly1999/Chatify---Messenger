@@ -27,7 +27,7 @@ function ProfileHeader() {
 
   return (
     <div className='p-6 border-b border-slate-700/50'>
-      <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-4'>
+      <div className='flex flex-row items-center justify-between gap-4'>
         <div className='flex items-center gap-3'>
           {/* AVATAR */}
           <div className='avatar online'>
