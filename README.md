@@ -2,7 +2,7 @@
 
 A modern, real-time messaging application built with the MERN stack and Socket.io, featuring secure authentication, image sharing, and a responsive dark theme interface.
 
-**Live Demo**: [Try it out!](https://chatify-messenger-16yi1.sevalla.app/login)
+**Live Demo**: [Try it out!](https://mychatify-app.vercel.app)
 
 ## 🚀 Features
 
