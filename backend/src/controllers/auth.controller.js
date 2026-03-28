@@ -100,7 +100,7 @@ export const logout = (req, res) => {
     maxAge: 0,
     secure: ENV.NODE_ENV !== 'development',
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: ENV.NODE_ENV === 'development' ? 'strict' : 'none',
   });
   res.status(200).json({ message: 'Logged out successfully' });
 };
