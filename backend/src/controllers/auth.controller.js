@@ -38,14 +38,22 @@ export const signup = async (req, res) => {
 
     if (newUser) {
       const savedUser = await newUser.save();
-      generateToken(savedUser._id, res);
-
+      const token = generateToken(savedUser._id);
       res.status(201).json({
+        token,
         _id: newUser._id,
         fullName: newUser.fullName,
         email: newUser.email,
         profilePic: newUser.profilePic,
       });
+      // generateToken(savedUser._id, res);
+
+      // res.status(201).json({
+      //   _id: newUser._id,
+      //   fullName: newUser.fullName,
+      //   email: newUser.email,
+      //   profilePic: newUser.profilePic,
+      // });
 
       try {
         await sendWelcomeEmail(
@@ -81,14 +89,23 @@ export const login = async (req, res) => {
     if (!isPasswordCorrect)
       return res.status(400).json({ message: 'Invalid credentials' });
 
-    generateToken(user._id, res);
-
+    const token = generateToken(user._id);
     res.status(200).json({
+      token,
       _id: user._id,
       fullName: user.fullName,
       email: user.email,
       profilePic: user.profilePic,
     });
+
+    // generateToken(user._id, res);
+
+    // res.status(200).json({
+    //   _id: user._id,
+    //   fullName: user.fullName,
+    //   email: user.email,
+    //   profilePic: user.profilePic,
+    // });
   } catch (error) {
     console.error('error in login contoller:', error);
     res.status(500).json({ message: 'Internal server error' });
@@ -96,14 +113,18 @@ export const login = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-  res.cookie('jwt', '', {
-    maxAge: 0,
-    secure: ENV.NODE_ENV !== 'development',
-    httpOnly: true,
-    sameSite: ENV.NODE_ENV === 'development' ? 'strict' : 'none',
-  });
   res.status(200).json({ message: 'Logged out successfully' });
 };
+
+// export const logout = (req, res) => {
+//   res.cookie('jwt', '', {
+//     maxAge: 0,
+//     secure: ENV.NODE_ENV !== 'development',
+//     httpOnly: true,
+//     sameSite: ENV.NODE_ENV === 'development' ? 'strict' : 'none',
+//   });
+//   res.status(200).json({ message: 'Logged out successfully' });
+// };
 
 export const updateProfile = async (req, res) => {
   try {
